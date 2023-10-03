@@ -24,17 +24,15 @@ export const ContactForm = () => {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
-  console.log('contacts', contacts);
-
   const onFormSubmit = contactData => {
-    // const { name } = contactData;
-    // const isNameInContacts = contacts.some(
-    //   contact => contact.name.toLowerCase() === name.toLowerCase()
-    // );
-    // if (isNameInContacts) {
-    //   alert(`${name} is alredy in contacts`);
-    //   return;
-    // }
+    const { name } = contactData;
+    const isNameInContacts = contacts.some(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+    if (isNameInContacts) {
+      alert(`${name} is alredy in contacts`);
+      return;
+    }
 
     dispatch(addContact(contactData));
   };
